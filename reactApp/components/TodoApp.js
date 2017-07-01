@@ -26,6 +26,7 @@ export default class TodoApp extends React.Component {
     this.setState({todos: this.state.todos.concat({taskText: val, completed: false})})
     axios.post(dbUrl+'/add', {taskText: val, completed: false})
           .then(function (response) {
+            this.setState({})
             console.log(response)
           })
           .catch(function (error) {

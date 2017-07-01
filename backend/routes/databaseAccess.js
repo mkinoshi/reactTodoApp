@@ -1,10 +1,12 @@
 import express from 'express';
-import Todoitem from '../models/TodoItem'
+import TodoItem from '../models/TodoItem'
 const router = express.Router();
 
 router.post ('/add', (req, res) => {
+  console.log(req.body)
   const testTodo = new TodoItem({
-    task: "test task"
+    taskText: req.body.task,
+    completed: req.body.completed
   });
 
   testTodo.save()
@@ -14,7 +16,6 @@ router.post ('/add', (req, res) => {
     .catch(error => {
       res.send(error);
     })
-  });
 });
 
 export default router;
